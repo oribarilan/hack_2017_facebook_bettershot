@@ -1,8 +1,9 @@
 from flask import request, json, Response
 from app import app
-from exif_extract import url_extract
+from exif_extract import url_extract, extract
 from flask import Flask, request, send_from_directory
 import os
+import uuid
 
 
 @app.route('/<path:path>')
@@ -37,6 +38,32 @@ def api_process_src_url():
     # url = "https://upload.wikimedia.org/wikipedia/commons/6/67/Inside_the_Batad_rice_terraces.jpg"
 
     exif_props = url_extract(url)
+
+    data = {
+        'props': exif_props,
+        'analysis': "Wow! this is a great picture. You should consider going out more and explore the world"
+    }
+    js = json.dumps(data)
+
+    resp = Response(js, status=200, mimetype='application/json')
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+    resp.headers['Link'] = 'http://somelink.com'
+
+    return resp
+
+
+@app.route('/process/src/file', methods=['POST'])
+def api_process_src_file():
+    file = request.files["file"]
+
+    filename = str(uuid.uuid1()) + '.' + file.filename.split('.')[1]
+
+    dir = os.path.dirname(__file__)
+    path = os.path.join(dir + './img_repo/', filename)
+
+    file.save(path)
+
+    exif_props = extract(filename)
 
     data = {
         'props': exif_props,
