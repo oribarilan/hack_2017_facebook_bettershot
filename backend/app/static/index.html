@@ -218,7 +218,7 @@
             if(url == "" || url == undefined){ // from file
                 var formData = new FormData($('form')[0]);
                 $.ajax({
-                    url: serverAddr + '/process/src/file',  //Server script to process data
+                    url: '/process/src/file',  //Server script to process data
                     type: 'POST',
                     xhr: function() {  // Custom XMLHttpRequest
                         var myXhr = $.ajaxSettings.xhr();
@@ -245,28 +245,9 @@
                 });
             }else{ // url
                 document.getElementById('tb_url').value = "";
-                var form = new FormData();
-                form.append("src", url);
-                form.append("", "");
-                var settings = {
-                    "async": true,
-                    "crossDomain": true,
-                    "url": serverAddr + "/process/src/url",
-                    "method": "POST",
-                    "processData": false,
-                    "contentType": false,
-                    "mimeType": "multipart/form-data",
-                    "data": form,
-                    success: function(data) {
-                        console.log(data);
-                    },
-                    error: function(a) {
-                        console.log("err");
-                    },
-                }
-
-                $.ajax(settings).done(function (response) {
-                });
+				$.post("/process/src/url", {src: url}, function(data){
+					console.log(data);
+				}, "json");
             }
             
         });
