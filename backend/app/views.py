@@ -1,9 +1,17 @@
 from flask import request, json, Response
 from app import app
 from exif_extract import url_extract
+from flask import Flask, request, send_from_directory
+import os
 
-@app.route('/')
-@app.route('/index')
+
+@app.route('/<path:path>')
+def root(path):
+  # send_static_file will guess the correct MIME type
+  return app.send_static_file(os.path.join('js', path).replace("\\", "/"))
+
+
+@app.route('/test')
 def index():
     return 'Hello World'
 
