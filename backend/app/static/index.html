@@ -1,22 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <link rel="stylesheet" href="css/dragndrop.css">
-<!-- Bootstrap Core CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Custom CSS -->
-<link href="css/portfolio-item.css" rel="stylesheet">
 
 <head>
-<style type="text/css">
+    <style type="text/css">
    body { background: #CDCDCD !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
-   .row {
-        background: #CDCDCD !important;
-   }
-   .panel-body   {
-       background: #DDDDDD
-   }
 </style>
+
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,9 +15,24 @@
     <meta name="author" content="">
 
     <title>BetterShot</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/portfolio-item.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
 </head>
 
-<body>
+<body bgcolor="#E6E6FA">
+
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
@@ -39,7 +44,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Start Bootstrap</a>
+                <a class="navbar-brand" href="#">BetterShot</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -84,20 +89,43 @@
 
 						  <!-- Standar Form -->
 						  <h4>Select files from your computer</h4>
-         
+						  <!-- <form action="" method="post" type=file enctype="multipart/form-data" id="js-upload-form">
+							<div class="form-inline">
+							  <div class="form-group">
+								<input type="file" name="files" id="js-upload-files">
+							  </div>
+							  <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button>
+							</div>
+						  </form>-->
 
-                            <form enctype="multipart/form-data" method="POST" name="fileinfo">
-                                <label>enter url for file:</label>
-                                <input type="text" name="url_of_pic" size="12" maxlength="32" /><br />
-                                <label>File to stash:</label>
-                                <input type="file" name="pic_to_upload" id="imgInp">
-                                <img id="blah" src="#" alt="your image" height="150">
+						  <form action="https://7994f3d8.ngrok.io/hello" method="get">
+                            <label>add picure url</label>
+                            <input type="text" name="filelabel" size="12" maxlength="32" /><br />
+                            <label>browse for picture</label>
+                            <input type="file"/>
+                            <input type="submit" value="Sumbit!" />
+  						  </form>
+						  <!-- Drop Zone -->
+						  <h4>Or drag and drop files below</h4>
+						  <div class="upload-drop-zone" id="drop-zone">
+							Just drag and drop files here
+						  </div>
 
-                                <input type="submit" value="Stash the file!" />
-                            </form>
-                                <div = id="output1"></div>
-                           
-						 
+						  <!-- Progress Bar -->
+						  <div class="progress">
+							<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+							  <span class="sr-only">60% Complete</span>
+							</div>
+						  </div>
+
+						  <!-- Upload Finished
+						  <div class="js-upload-finished">
+							<h3>Processed files</h3>
+							<div class="list-group">
+							  <a href="#" class="list-group-item list-group-item-success"><span class="badge alert-success pull-right">Success</span>image-01.jpg</a>
+							  <a href="#" class="list-group-item list-group-item-success"><span class="badge alert-success pull-right">Success</span>image-02.jpg</a>
+							</div>
+						  </div> -->
 						</div>
 					  </div>
 					</div> <!-- /container -->
@@ -172,10 +200,10 @@
     <script src="js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/requests.js"></script>
-	<!--<script src="js/getParms.js"></script> -->
-
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="js/dragndrop.js"></script>
+	<script src="js/getParms.js"></script>
+ז
 	
 </body>
 
