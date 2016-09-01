@@ -97,22 +97,23 @@
 							  <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button>
 							</div>
 						  </form>-->
+                          
+                          
                             <form enctype="multipart/form-data">
                                 <label>URL</label>
                                 <input id="tb_url" type="text" name="filelabel" style="width: 80%;"/><br />
                                 <label>Browse</label>
-                                <input name="file" type="file" id="imgInp"/>
-                                <input type="button" value="Upload" />
+                                <input class="btn btn-default" name="file" type="file" id="imgInp"/>
+                                <input class="btn btn-default" type="button" value="Upload" />
                             </form>
 						  <!-- Drop Zone -->
 
 						  <!-- Progress Bar -->
-						  <div class="progress">
-							<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-							  <span class="sr-only">60% Complete</span>
-							</div>
-						  </div>
-
+                            <div id="spinner" class="spinner" style="visibility: hidden;">
+                                <div class="bounce1"></div>
+                                <div class="bounce2"></div>
+                                <div class="bounce3"></div>
+                            </div>
 						  <!-- Upload Finished
 						  <div class="js-upload-finished">
 							<h3>Processed files</h3>
@@ -229,8 +230,11 @@
                     },
                     //Ajax events
             //         beforeSend: beforeSendHandler,
-                    success: function(a) { 
-                        console.log("suc"); 
+                    beforeSend: function(a) {
+                        toggleSpinner();
+                    },
+                    success: function(a) {
+                        toggleSpinner();
                     },
                     error: function(a) { 
                         console.log("err"); 
@@ -257,8 +261,11 @@
                     "contentType": false,
                     "mimeType": "multipart/form-data",
                     "data": form,
+                    beforeSend: function(a) {
+                        toggleSpinner();
+                    },
                     success: function(a) {
-                        console.log("suc");
+                        toggleSpinner();
                     },
                     error: function(a) {
                         console.log("err");
@@ -269,8 +276,17 @@
                 });
             }
             
+
         });
         
+        var toggleSpinner = function(){
+            var e = document.getElementById("spinner");
+            if(e.style.visibility == "hidden"){
+                e.style.visibility = "visible";
+            }else{
+                e.style.visibility = "hidden";
+            }
+        }
     </script>
 </body>
 
