@@ -63,7 +63,7 @@ def api_process_src_file():
 
     file.save(path)
 
-    exif_props = extract(filename)
+    exif_props = extract(path)
 
     data = {
         'props': exif_props,

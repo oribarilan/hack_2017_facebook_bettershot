@@ -2,18 +2,17 @@
 <html lang="en">
 <link rel="stylesheet" href="css/dragndrop.css">
 
-<head>
-    <style type="text/css">
-   body { background: #CDCDCD !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+<head>    
+
+<style type="text/css">
+    <script src="https://use.fontawesome.com/4fe566b2bf.js"></script>
+    body { background: #CDCDCD !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
 </style>
-
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>BetterShot</title>
 
     <!-- Bootstrap Core CSS -->
@@ -22,12 +21,8 @@
     <!-- Custom CSS -->
     <link href="css/portfolio-item.css" rel="stylesheet">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <!-- awesome fonts -->
+    <script src="https://use.fontawesome.com/4fe566b2bf.js"></script>
 
 </head>
 
@@ -97,14 +92,20 @@
 							  <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button>
 							</div>
 						  </form>-->
-                            <form enctype="multipart/form-data">
-                                <label>URL</label>
-                                <input id="tb_url" type="text" name="filelabel" style="width: 80%;"/><br />
-                                <label>Browse</label>
-                                <input name="file" type="file" id="imgInp"/>
-                                <input type="button" value="Upload" />
-                            </form>
+
+						  <form action="https://7994f3d8.ngrok.io/hello" method="get">
+                            <label>add picure url</label>
+                            <input type="text" name="filelabel" size="12" maxlength="32" /><br />
+                            <label>browse for picture</label>
+                            <input type='file' id="imgInp" />
+                            
+                            <input type="submit" value="Sumbit!" />
+  						  </form>
 						  <!-- Drop Zone -->
+						  <h4>Or drag and drop files below</h4>
+						  <div class="upload-drop-zone" id="drop-zone">
+							Just drag and drop files here
+						  </div>
 
 						  <!-- Progress Bar -->
 						  <div class="progress">
@@ -125,12 +126,10 @@
 					  </div>
 					</div> <!-- /container -->
 			</div>
-            
+            <!-- picture preview div -->
             <div class="col-md-4">
-                    <img id="blah" src="http://clipart-finder.com/data/mini/cybergedeon_skyline_landscape.png" alt="your image"  class="img-responsive"  />
+                <img id="blah" src="#" alt="your image"  class="img-responsive"  />
             </div>
-            
-
             <div class="col-md-4">
                 <div id="id01"></div>
                 <h3>Project Description</h3>
@@ -198,80 +197,16 @@
     <!-- /.container -->
 
     <!-- jQuery -->
-    <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+    <script  src="https://code.jquery.com/jquery-3.1.0.js"
+             integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk="
+			 crossorigin="anonymous">
+    </script>
+
     <!-- Bootstrap Core JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="js/requests.js"></script>
-    <script src="js/image_prev.js"></script>
-	<script>
-        var serverAddr = "http://127.0.0.1:5000";
-        $(':file').change(function(){
-            var file = this.files[0];
-            //var name = file.name;
-            var size = file.size;
-            var type = file.type;
-            //Your validation
-        });
-
-        $(':button').click(function(){
-            var url = document.getElementById('tb_url').value;
-            if(url == "" || url == undefined){ // from file
-                var formData = new FormData($('form')[0]);
-                $.ajax({
-                    url: serverAddr + '/process/src/file',  //Server script to process data
-                    type: 'POST',
-                    xhr: function() {  // Custom XMLHttpRequest
-                        var myXhr = $.ajaxSettings.xhr();
-                        if(myXhr.upload){ // Check if upload property exists
-                            myXhr.upload.addEventListener('progress',progressHandlingFunction, false); // For handling the progress of the upload
-                        }
-                        return myXhr;
-                    },
-                    //Ajax events
-            //         beforeSend: beforeSendHandler,
-                    success: function(a) { 
-                        console.log("suc"); 
-                    },
-                    error: function(a) { 
-                        console.log("err"); 
-                    },
-                    // Form data
-                    data: formData,
-                    //Options to tell jQuery not to process data or worry about content-type.
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    crossDomain: true
-                });
-            }else{ // url
-                document.getElementById('tb_url').value = "";
-                var form = new FormData();
-                form.append("src", url);
-                form.append("", "");
-                var settings = {
-                    "async": true,
-                    "crossDomain": true,
-                    "url": serverAddr + "/process/src/url",
-                    "method": "POST",
-                    "processData": false,
-                    "contentType": false,
-                    "mimeType": "multipart/form-data",
-                    "data": form,
-                    success: function(a) {
-                        console.log("suc");
-                    },
-                    error: function(a) {
-                        console.log("err");
-                    },
-                }
-
-                $.ajax(settings).done(function (response) {
-                });
-            }
-            
-        });
-        
-    </script>
+	<script src="js/image_prev.js"></script>
+ז
+	
 </body>
 
 </html>

@@ -28,7 +28,7 @@ def url_extract(url):
 
 
 def extract(path):
-    exif_dict = piexif.load(_img_repo_name + path)
+    exif_dict = piexif.load(path)
     props = {}
     for ifd in ("0th", "Exif", "GPS", "1st"):
         for tag in exif_dict[ifd]:
