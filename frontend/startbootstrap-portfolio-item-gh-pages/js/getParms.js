@@ -6,7 +6,8 @@ var displayResult = function(result){
     $("#test1").replaceWith("<li>" + result.hello)
 }
 
-alert("here!")
+//alert("here!")
+/*
 $.ajax({
         url: "https://7994f3d8.ngrok.io/hello",
         type: 'GET',
@@ -17,6 +18,19 @@ $.ajax({
             console.log(res);
         }
 });
+
+$.ajax({
+        url: "https://7994f3d8.ngrok.io/process/src/url",
+        type: 'POST',
+        async: true,
+        headers: {"src" : "https://upload.wikimedia.org/wikipedia/commons/6/67/Inside_the_Batad_rice_terraces.jpg"},
+        dataType: 'json', // added data type
+        success: function(res) {
+            displayResult(res);
+            console.log(res);
+        }
+});
+*/
 /*
 var test = function(){
     alert('called');
