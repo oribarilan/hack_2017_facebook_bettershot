@@ -9,7 +9,10 @@ import uuid
 
 from flask import Flask
 
+
+from flask_cors import CORS
 app = Flask(__name__, static_url_path='')
+CORS(app)
 #from app import views
 
 
@@ -19,25 +22,25 @@ def root(path):
   return app.send_static_file(os.path.join('js', path).replace("\\", "/"))
 
 
-@app.route('/test')
-def index():
+@app.route('/hello')
+def hello_world():
     return 'Hello World'
 
-@app.route('/hello', methods = ['GET'])
-def api_hello():
-    data = {
-        'hello': 'world',
-        'number': 3
-    }
-    js = json.dumps(data)
-
-    resp = Response(js, status=200, mimetype='application/json')
-    resp.headers['Access-Control-Allow-Origin'] = '*'
-    resp.headers['Link'] = 'http://somelink.com'
-
-    return resp
-
-
+#@app.route('/hello', methods = ['GET'])
+#def api_hello():
+#    data = {
+#        'hello': 'world',
+#        'number': 3
+#    }
+#    js = json.dumps(data)
+#
+#    resp = Response(js, status=200, mimetype='application/json')
+#    resp.headers['Access-Control-Allow-Origin'] = '*'
+#    resp.headers['Link'] = 'http://somelink.com'
+#
+#    return resp
+#
+#
 @app.route('/process/src/url', methods=['POST'])
 def api_process_src_url():
 
@@ -45,44 +48,43 @@ def api_process_src_url():
     # url = "https://upload.wikimedia.org/wikipedia/commons/6/67/Inside_the_Batad_rice_terraces.jpg"
 
     exif_props = url_extract(url)
-    classification = imagga_api.categories_url(url=url)
-    image_result = GraderFactory(classification)
-    print(result)
+    classification = imagga_api.categorize_image(url=url)
+    image_result = GraderFactory().create_factory(classification)
+    grade_result = image_result.grade(exif_props)
 
-    data = {
-        'props': exif_props,
-        'analysis': "Wow! this is a great picture. You should consider going out more and explore the world"
-    }
-    js = json.dumps(data)
+    #data = {
+    #    'props': exif_props,
+    #    'analysis': "Wow! this is a great picture. You should consider going out more and explore the world"
+    #}
+    js = json.dumps(grade_result)
 
     resp = Response(js, status=200, mimetype='application/json')
     resp.headers['Access-Control-Allow-Origin'] = '*'
-    resp.headers['Link'] = 'http://somelink.com'
 
     return resp
 
 
-@app.route('/process/src/file', methods=['POST'])
-def api_process_src_file():
-    file = request.files["file"]
-
-    filename = str(uuid.uuid1()) + '.' + file.filename.split('.')[1]
-
-    dir = os.path.dirname(__file__)
-    path = os.path.join(dir + './img_repo/', filename)
-
-    file.save(path)
-
-    exif_props = extract(path)
-
-    data = {
-        'props': exif_props,
-        'analysis': "Wow! this is a great picture. You should consider going out more and explore the world"
-    }
-    js = json.dumps(data)
-
-    resp = Response(js, status=200, mimetype='application/json')
-    resp.headers['Access-Control-Allow-Origin'] = '*'
-    resp.headers['Link'] = 'http://somelink.com'
-
-    return resp
+#@app.route('/process/src/file', methods=['POST'])
+#def api_process_src_file():
+#    file = request.files["file"]
+#
+#    filename = str(uuid.uuid1()) + '.' + file.filename.split('.')[1]
+#
+#    dir = os.path.dirname(__file__)
+#    path = os.path.join(dir + './img_repo/', filename)
+#
+#    file.save(path)
+#
+#    exif_props = extract(path)
+#
+#    data = {
+#        'props': exif_props,
+#        'analysis': "Wow! this is a great picture. You should consider going out more and explore the world"
+#    }
+#    js = json.dumps(data)
+#
+#    resp = Response(js, status=200, mimetype='application/json')
+#    resp.headers['Access-Control-Allow-Origin'] = '*'
+#    resp.headers['Link'] = 'http://somelink.com'
+#
+#    return resp

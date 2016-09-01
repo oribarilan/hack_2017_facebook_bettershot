@@ -106,7 +106,10 @@ class LandscapeGrader(ImageGrader):
         self.add_shutter_speed_attr(shutter_speed_insights, 1/4000, 30)
 
 class GraderFactory(object):
-    def __init__(self, classification):
+    def __init__(self):
+        pass
+
+    def create_factory(self, classification):
         if classification.lower() == 'nature landscape':
             return LandscapeGrader()
         #elif classification.lower() == "people portraits":
