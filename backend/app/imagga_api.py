@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 categories_url = "https://api.imagga.com/v1/categorizers"
 
-logger.debug("API key: {}:{}".format(api_key, api_secret))
+logger.debug("API key: {}:{}".format(API_KEY, API_SECRET))
 
 def categorize_image(url=None, content=None):
     categorize_url = "https://api.imagga.com/v1/categorizations/personal_photos?"
@@ -38,15 +38,15 @@ def imagga_upload_image(filepath):
     logger.debug("Entering 'imagga_upload_image'")
     url = 'https://api.imagga.com/v1/content'
     files = {'media': open(filepath, 'rb')}
-    response = requests.post(url, files=files, auth=(api_key, api_secret))
+    response = requests.post(url, files=files, auth=(API_KEY, API_SECRET))
     logger.debug("Leaving 'imagga_upload_image'")
     return response.json()["uploaded"][0]["id"]
 
 # Sample run
-image_id = imagga_upload_image("/home/liran/fb_hackathon_2016/sample_shots/landscape2.jpg")
-print(categorize_image(content=image_id))
-image_url = 'http://docs.imagga.com/static/images/docs/sample/japan-605234_1280.jpg'
-categorize_image(url=image_url)
+#image_id = imagga_upload_image("/home/liran/fb_hackathon_2016/sample_shots/landscape2.jpg")
+#print(categorize_image(content=image_id))
+#image_url = 'http://docs.imagga.com/static/images/docs/sample/japan-605234_1280.jpg'
+#categorize_image(url=image_url)
 
 # Pretty print JSON
 # print(json.dumps(response.json(), sort_keys=True, indent=4))

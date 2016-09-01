@@ -1,9 +1,16 @@
 from flask import request, json, Response
-from app import app
+#from app import app
 from exif_extract import url_extract, extract
 from flask import Flask, request, send_from_directory
+from imagegrader import GraderFactory
+import imagga_api
 import os
 import uuid
+
+from flask import Flask
+
+app = Flask(__name__, static_url_path='')
+#from app import views
 
 
 @app.route('/<path:path>')
@@ -38,6 +45,9 @@ def api_process_src_url():
     # url = "https://upload.wikimedia.org/wikipedia/commons/6/67/Inside_the_Batad_rice_terraces.jpg"
 
     exif_props = url_extract(url)
+    classification = imagga_api.categories_url(url=url)
+    image_result = GraderFactory(classification)
+    print(result)
 
     data = {
         'props': exif_props,

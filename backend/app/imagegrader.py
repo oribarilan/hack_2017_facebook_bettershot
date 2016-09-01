@@ -104,3 +104,10 @@ class LandscapeGrader(ImageGrader):
         self.add_fstop_attr(f_stop_insights, 5.6, self.INF)
         self.add_focal_length_attr(focal_length_insights, self.NEG_INF, 20)
         self.add_shutter_speed_attr(shutter_speed_insights, 1/4000, 30)
+
+class GraderFactory(object):
+    def __init__(self, classification):
+        if classification.lower() == 'nature landscape':
+            return LandscapeGrader()
+        #elif classification.lower() == "people portraits":
+        #    return PortraitGrader()

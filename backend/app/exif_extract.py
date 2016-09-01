@@ -1,7 +1,7 @@
 import ntpath
 import piexif
 import json
-import urllib
+import urllib.request as urllib
 import uuid
 import os
 
@@ -24,7 +24,8 @@ def url_extract(url):
 
     file.retrieve(url, fullname)
     props = extract(fullname)
-    return filter(props)
+    return props
+    #return filter(props)
 
 
 def extract(path):
@@ -33,11 +34,11 @@ def extract(path):
     for ifd in ("0th", "Exif", "GPS", "1st"):
         for tag in exif_dict[ifd]:
             props[piexif.TAGS[ifd][tag]["name"]] = exif_dict[ifd][tag]
-    return filter(props)
+    return normalize_exif(filter(props))
 
 
-def print_exit(props):
-    print json.dumps(props, indent=4, separators=(',', ': '))
+def print_exif(props):
+    print(json.dumps(props, indent=4, separators=(',', ': ')))
 
 
 def clean_img_repo():
@@ -48,11 +49,27 @@ def clean_img_repo():
 
 def filter(props):
     filters = ["ExposureTime", "FNumber", "FocalLength", "ISOSpeedRatings"]
-    filtered_dict = {k: v for k, v in props.iteritems() if k in filters}
+    filtered_dict = {k: v for k, v in props.items() if k in filters}
     return filtered_dict
     # return props
 
+def normalize_exif(exif_data):
+    exposure_time = exif_data["ExposureTime"]
+    #exif_data["ExposureTime"] = exposure_time[0] + '/' + exposure_time[1]
+    #exif_data["FNumber"] = exif_data["Fnumber"][0]
+    #exif_data["FocalLength"] = exif_data["FocalLength"][0]
+    #exif_data["ISOSpeedRatings"] = exif_data["ISOSpeedRatings"]
+    result = {}
+
+    # TODO eval is EVIL!
+    result["shutter_speed"] = eval(str(exposure_time[0]) + '/' + str(exposure_time[1]))
+    result["f_stop"] = exif_data["FNumber"][0]
+    result["focal_length"] = exif_data["FocalLength"][0]
+    result["iso"] = exif_data["ISOSpeedRatings"]
+
+    return result
+
 if __name__ == '__main__':
     # clean_img_repo()
-    print_exit(url_extract("https://upload.wikimedia.org/wikipedia/commons/6/67/Inside_the_Batad_rice_terraces.jpg"))
+    print_exif(url_extract("https://upload.wikimedia.org/wikipedia/commons/6/67/Inside_the_Batad_rice_terraces.jpg"))
 
