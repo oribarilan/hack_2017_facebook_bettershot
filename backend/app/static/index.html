@@ -134,7 +134,7 @@
                 <div id="id01"></div>
 
                <div class="panel panel-default">
-               <div class="panel-heading"><strong>Analyse Results</strong> <small></small></div>
+               <div class="panel-heading"><strong>Analysis</strong> <small></small></div>
                <div class="panel-body">
                <!-- <h1><center>Analize Results</center></h1>-->
                 
@@ -261,9 +261,36 @@
         });
         
         var applyResponse = function(response){
+            $("#list_rank")[0].innerHTML = "";
+            
+            var classification = "Landscape";
+            
+            $('<span>').html(
+                    "<li class='list-group-item' style='margin-bottom: 3px;'> Photo Type: "+classification+"</li>"
+                ).appendTo('#list_rank');
+            
             $.each(response, function(i, item) {
+                
+
+                
+                var class_ext = "";
+                if(item['grade'] == 1){
+                    class_ext = "list-group-item-success'";
+                }else{
+                    class_ext = "list-group-item-danger'";
+                }
+                
+                var value = item['value'];
+                if(item['label'] == "Aperture Size"){
+                    value = "f/"+value;
+                }else if(item['label'] == "Focal Length"){
+                    value = value+"mm";
+                }else if(item['label'] == "Exposure Time"){
+                    value = value+"s";
+                }
+                
                 $('<span >').html(
-                    "<li class='list-group-item list-group-item-success'>"+item['label'] + ": "  + item['value']+"</li>" + 
+                    "<li class='list-group-item "+class_ext+">"+item['label'] + ": "  + value+"</li>" + 
                     "<li class='list-group-item list-group-item-warning' style='margin-bottom: 3px;'>"+item['insight']+"</li>"
                 ).appendTo('#list_rank');
             });

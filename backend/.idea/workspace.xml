@@ -14,7 +14,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/backend$run.coverage" NAME="run Coverage Results" MODIFIED="1472773791227" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/backend$views.coverage" NAME="views Coverage Results" MODIFIED="1472774105028" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
+    <SUITE FILE_PATH="coverage/backend$views.coverage" NAME="views Coverage Results" MODIFIED="1472781034460" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -29,9 +29,17 @@
         <entry file="file://$PROJECT_DIR$/app/exif_extract.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="476">
-              <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+              <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
+                <marker date="1472781015918" expanded="true" signature="149:592" ph="..." />
+                <marker date="1472781015918" expanded="true" signature="613:855" ph="..." />
+                <marker date="1472781015918" expanded="true" signature="708:814" ph="..." />
+                <marker date="1472781015918" expanded="true" signature="880:943" ph="..." />
+                <marker date="1472781015918" expanded="true" signature="967:1120" ph="..." />
+                <marker date="1472781015918" expanded="true" signature="1141:1330" ph="..." />
+                <marker date="1472781015918" expanded="true" signature="1362:1413" ph="..." />
+                <marker date="1472781015918" expanded="true" signature="2323:2330" ph="..." />
               </folding>
             </state>
           </provider>
@@ -40,7 +48,7 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
+            <state relative-caret-position="697">
               <caret line="101" column="9" selection-start-line="101" selection-start-column="9" selection-end-line="101" selection-end-column="9" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
@@ -512,6 +520,14 @@
           <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
+            <marker date="1472781015918" expanded="true" signature="149:592" ph="..." />
+            <marker date="1472781015918" expanded="true" signature="613:855" ph="..." />
+            <marker date="1472781015918" expanded="true" signature="708:814" ph="..." />
+            <marker date="1472781015918" expanded="true" signature="880:943" ph="..." />
+            <marker date="1472781015918" expanded="true" signature="967:1120" ph="..." />
+            <marker date="1472781015918" expanded="true" signature="1141:1330" ph="..." />
+            <marker date="1472781015918" expanded="true" signature="1362:1413" ph="..." />
+            <marker date="1472781015918" expanded="true" signature="2323:2330" ph="..." />
           </folding>
         </state>
       </provider>
@@ -550,6 +566,14 @@
           <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
+            <marker date="1472781015918" expanded="true" signature="149:592" ph="..." />
+            <marker date="1472781015918" expanded="true" signature="613:855" ph="..." />
+            <marker date="1472781015918" expanded="true" signature="708:814" ph="..." />
+            <marker date="1472781015918" expanded="true" signature="880:943" ph="..." />
+            <marker date="1472781015918" expanded="true" signature="967:1120" ph="..." />
+            <marker date="1472781015918" expanded="true" signature="1141:1330" ph="..." />
+            <marker date="1472781015918" expanded="true" signature="1362:1413" ph="..." />
+            <marker date="1472781015918" expanded="true" signature="2323:2330" ph="..." />
           </folding>
         </state>
       </provider>
@@ -589,6 +613,14 @@
           <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
+            <marker date="1472781015918" expanded="true" signature="149:592" ph="..." />
+            <marker date="1472781015918" expanded="true" signature="613:855" ph="..." />
+            <marker date="1472781015918" expanded="true" signature="708:814" ph="..." />
+            <marker date="1472781015918" expanded="true" signature="880:943" ph="..." />
+            <marker date="1472781015918" expanded="true" signature="967:1120" ph="..." />
+            <marker date="1472781015918" expanded="true" signature="1141:1330" ph="..." />
+            <marker date="1472781015918" expanded="true" signature="1362:1413" ph="..." />
+            <marker date="1472781015918" expanded="true" signature="2323:2330" ph="..." />
           </folding>
         </state>
       </provider>
@@ -660,16 +692,24 @@
     <entry file="file://$PROJECT_DIR$/app/exif_extract.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
-          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
+            <marker date="1472781015918" expanded="true" signature="149:592" ph="..." />
+            <marker date="1472781015918" expanded="true" signature="613:855" ph="..." />
+            <marker date="1472781015918" expanded="true" signature="708:814" ph="..." />
+            <marker date="1472781015918" expanded="true" signature="880:943" ph="..." />
+            <marker date="1472781015918" expanded="true" signature="967:1120" ph="..." />
+            <marker date="1472781015918" expanded="true" signature="1141:1330" ph="..." />
+            <marker date="1472781015918" expanded="true" signature="1362:1413" ph="..." />
+            <marker date="1472781015918" expanded="true" signature="2323:2330" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
+        <state relative-caret-position="697">
           <caret line="101" column="9" selection-start-line="101" selection-start-column="9" selection-end-line="101" selection-end-column="9" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />

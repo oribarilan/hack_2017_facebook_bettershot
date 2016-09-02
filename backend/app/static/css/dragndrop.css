@@ -8,6 +8,10 @@
   background-color:  cadetblue !important;
 }
 
+.page-header {
+  margin: 12px !important;
+}
+
 #list_rank {
   min-height: 300px;
 }
