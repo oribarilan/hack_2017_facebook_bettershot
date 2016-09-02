@@ -2,8 +2,9 @@ import json
 
 class ImageGrader(object):
     class exifAttribute(object):
-        def __init__(self, name, matcher, insights):
+        def __init__(self, name, label, matcher, insights):
             self.name = name 
+            self.label = label
             self.matcher = matcher
             self.insights = insights
             self.grade = None
@@ -40,7 +41,8 @@ class ImageGrader(object):
             grade = self.attributes[attribute].matcher(value)
             #self.attributes[attribute].set_grade(grade)
             insight = self.attributes[attribute].insights[grade]
-            results[attribute] = {"value": exif_data[attribute] ,"grade": grade, "insight": insight}
+            label = self.attributes[attribute].label
+            results[attribute] = {"label": label, "value": exif_data[attribute] ,"grade": grade, "insight": insight}
         return results
 
     def range_matcher(self, min_val, max_val):
@@ -63,19 +65,19 @@ class ImageGrader(object):
         self.attributes[exif_attr.name] = exif_attr
 
     def add_iso_attr(self, insights, threshold):
-        exif_attr = self.exifAttribute("iso", self.threshold_matcher(threshold), insights)
+        exif_attr = self.exifAttribute("iso", "ISO", self.threshold_matcher(threshold), insights)
         self.add_attribute(exif_attr)
 
     def add_fstop_attr(self, insights, min_fstop, max_fstop):
-        exif_attr = self.exifAttribute("f_stop", self.range_matcher(min_fstop, max_fstop), insights)
+        exif_attr = self.exifAttribute("f_stop", "Aperture Size", self.range_matcher(min_fstop, max_fstop), insights)
         self.add_attribute(exif_attr)
 
     def add_focal_length_attr(self, insights, min_focal, max_focal):
-        exif_attr = self.exifAttribute("focal_length", self.range_matcher(min_focal, max_focal), insights)
+        exif_attr = self.exifAttribute("focal_length", "Focal Length", self.range_matcher(min_focal, max_focal), insights)
         self.add_attribute(exif_attr)
 
     def add_shutter_speed_attr(self, insights, min_speed, max_speed):
-        exif_attr = self.exifAttribute("shutter_speed", self.range_matcher(min_speed, max_speed), insights)
+        exif_attr = self.exifAttribute("shutter_speed", "Exposure Time", self.range_matcher(min_speed, max_speed), insights)
         self.add_attribute(exif_attr)
 
     #def add_matcher(attribute, matcher):
