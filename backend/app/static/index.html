@@ -109,6 +109,7 @@
 						  <!-- Drop Zone -->
 
 						  <!-- Progress Bar -->
+
                             <div id="spinner" class="spinner" style="visibility: hidden;">
                                 <div class="bounce1"></div>
                                 <div class="bounce2"></div>
@@ -134,18 +135,21 @@
 
             <div class="col-md-4">
                 <div id="id01"></div>
-                <h3>Project Description</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
-                <h3>Project Details</h3>
-                <ul>
-                    <li id="test1">Lorem Ipsum</li>
-                    <li id="test2">Dolor Sit Amet</li>
-                    <li id="test3">Consectetur</li>
-                    <li>Adipiscing Elit</li>
-                </ul>
+
+               <div class="panel panel-default">
+               <div class="panel-heading"><strong>Analize Results</strong> <small></small></div>
+               <div class="panel-body">
+               <!-- <h1><center>Analize Results</center></h1>-->
+                
+
+                
+                <ul class="list-group" id="list_rank"></ul>
+
             </div>
 	
 
+        </div>
+        </div>
         </div>
         <!-- /.row -->
 
@@ -255,6 +259,49 @@
             }
         });
         
+</script>
+<script>
+    var response = [{
+        "prop":"iso",
+        "size":"200",
+        "insight":"not veraaaaaaaaaaaaaaaaaay"
+    },
+    {
+        "prop":"aperture",
+        "size":"1/4",
+        "insight":"excellent!"
+    }];
+
+    $.each(response, function(i, item) {
+    // $('<li">').html(
+    //     "<td>" + response[i].rank + "</td><td>" + response[i].content + "</td><td>" 
+    //     + response[i].UID + "</td>").appendTo('#records_table');
+    $('<span >').html(
+        //"<li class='list-group-item'>"+response[i].prop + " " + response[i].size+"</li>"+
+        //"<li class='list-group-item'>"+response[i].prop + " " + response[i].size+"</li>"+
+        "<li class='list-group-item list-group-item-success'>"+response[i].prop + ": "  + response[i].size+"</li>" + 
+        "<li class='list-group-item list-group-item-warning' style='margin-bottom: 3px;'>"+response[i].insight+"</li>"
+    ).appendTo('#list_rank');
+    });
+
+</script>
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="css/dragndrop.css">
+
+
+<head>
+    <style type="text/css">
+         body { background: #CDCDCD !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+    </style>
+
+    <!--<link rel='shortcut icon' href='favicon.ico' type='image/x-icon'/ >…        + response[i].UID + "</td>").appendTo('#records_table');});-->
+    
+
+</script>
         var toggleSpinner = function(){
             var e = document.getElementById("spinner");
             if(e.style.visibility == "hidden"){
