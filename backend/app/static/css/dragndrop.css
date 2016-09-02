@@ -4,6 +4,15 @@
   text-align: center;
 }
 
+body {
+  background-color:  lightgrey !important;
+}
+
+#blah {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .spinner > div {
   width: 18px;
   height: 18px;

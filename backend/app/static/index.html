@@ -3,10 +3,7 @@
 <link rel="stylesheet" href="css/dragndrop.css">
 
 <head>
-    <style type="text/css">
-         body { background: #CDCDCD !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
-    </style>
-
+    
     <link rel='shortcut icon' href='favicon.ico' type='image/x-icon'/ >
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,7 +28,7 @@
 
 </head>
 
-<body bgcolor="#E6E6FA">
+<body>
 
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -101,9 +98,9 @@
                           
                             <form enctype="multipart/form-data">
                                 <label>URL</label>
-                                <input id="tb_url" type="text" name="filelabel" style="width: 80%;"/><br />
+                                <input id="tb_url" type="text" class="form-control" name="filelabel" style="width: 100%;"/><br />
                                 <label>Browse</label>
-                                <input class="btn btn-default" name="file" type="file" id="imgInp"/>
+                                <input class="btn btn-default" name="file" type="file" id="imgInp" style="width: 100%;"/><br />
                                 <input class="btn btn-default" type="button" value="Upload" />
                             </form>
 						  <!-- Drop Zone -->
@@ -205,7 +202,8 @@
     <script src="js/requests.js"></script>
     <script src="js/image_prev.js"></script>
 	<script>
-        var serverAddr = "http://127.0.0.1:5000";
+        $("#imgInp")[0].addEventListener("click", function(){ document.getElementById('tb_url').value = ""; });
+        
         $(':file').change(function(){
             var file = this.files[0];
             //var name = file.name;
