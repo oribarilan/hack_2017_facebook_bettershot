@@ -55,6 +55,7 @@ def filter(props):
 
 def normalize_exif(exif_data):
     exposure_time = exif_data["ExposureTime"]
+    f_stop = exif_data["FNumber"]
     #exif_data["ExposureTime"] = exposure_time[0] + '/' + exposure_time[1]
     #exif_data["FNumber"] = exif_data["Fnumber"][0]
     #exif_data["FocalLength"] = exif_data["FocalLength"][0]
@@ -63,7 +64,8 @@ def normalize_exif(exif_data):
 
     # TODO eval is EVIL!
     result["shutter_speed"] = eval(str(exposure_time[0]) + '/' + str(exposure_time[1]))
-    result["f_stop"] = exif_data["FNumber"][0]
+    result["f_stop"] = eval(str(f_stop[0]) + '/' + str(f_stop[1]))
+    #result["f_stop"] = exif_data["FNumber"][0]
     result["focal_length"] = exif_data["FocalLength"][0]
     result["iso"] = exif_data["ISOSpeedRatings"]
 
@@ -71,5 +73,6 @@ def normalize_exif(exif_data):
 
 if __name__ == '__main__':
     # clean_img_repo()
-    print_exif(url_extract("https://upload.wikimedia.org/wikipedia/commons/6/67/Inside_the_Batad_rice_terraces.jpg"))
+    #print_exif(url_extract("https://upload.wikimedia.org/wikipedia/commons/6/67/Inside_the_Batad_rice_terraces.jpg"))
+    print_exif(extract("/home/liran/fb_hackathon_2016/sample_shots/landscape_wrong_small.jpg"))
 
