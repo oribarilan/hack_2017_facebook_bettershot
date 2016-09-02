@@ -1,23 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <link rel="stylesheet" href="css/dragndrop.css">
-<!-- Bootstrap Core CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Custom CSS -->
-<link href="css/portfolio-item.css" rel="stylesheet">
 
 <head>
-<style type="text/css">
-   body { background: #CDCDCD !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
-   .row {
-        background: #CDCDCD !important;
-   }
-   .panel-body   {
-       background: #DDDDDD
-   }
-</style>
+    <style type="text/css">
+         body { background: #CDCDCD !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+    </style>
 
+    <link rel='shortcut icon' href='favicon.ico' type='image/x-icon'/ >
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,9 +15,24 @@
     <meta name="author" content="">
 
     <title>BetterShot</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/portfolio-item.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
 </head>
 
-<body>
+<body bgcolor="#E6E6FA">
+
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
@@ -39,7 +44,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Start Bootstrap</a>
+                <a class="navbar-brand" href="#">BetterShot</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -76,7 +81,7 @@
         <!-- Portfolio Item Row -->
         <div class="row">
 
-			<div class="col-md-8">
+			<div class="col-md-4">
 					<div class="container1">
 					  <div class="panel panel-default">
 						<div class="panel-heading"><strong>Upload Files</strong> <small></small></div>
@@ -84,24 +89,49 @@
 
 						  <!-- Standar Form -->
 						  <h4>Select files from your computer</h4>
-         
-
-                            <form enctype="multipart/form-data" method="POST" name="fileinfo">
-                                <label>enter url for file:</label>
-                                <input type="text" name="url_of_pic" size="12" maxlength="32" /><br />
-                                <label>File to stash:</label>
-                                <input type="file" name="pic_to_upload" id="imgInp">
-                                <img id="blah" src="#" alt="your image" height="150">
-
-                                <input type="submit" value="Stash the file!" />
+						  <!-- <form action="" method="post" type=file enctype="multipart/form-data" id="js-upload-form">
+							<div class="form-inline">
+							  <div class="form-group">
+								<input type="file" name="files" id="js-upload-files">
+							  </div>
+							  <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button>
+							</div>
+						  </form>-->
+                          
+                          
+                            <form enctype="multipart/form-data">
+                                <label>URL</label>
+                                <input id="tb_url" type="text" name="filelabel" style="width: 80%;"/><br />
+                                <label>Browse</label>
+                                <input class="btn btn-default" name="file" type="file" id="imgInp"/>
+                                <input class="btn btn-default" type="button" value="Upload" />
                             </form>
-                                <div = id="output1"></div>
-                           
-						 
+						  <!-- Drop Zone -->
+
+						  <!-- Progress Bar -->
+                            <div id="spinner" class="spinner" style="visibility: hidden;">
+                                <div class="bounce1"></div>
+                                <div class="bounce2"></div>
+                                <div class="bounce3"></div>
+                            </div>
+						  <!-- Upload Finished
+						  <div class="js-upload-finished">
+							<h3>Processed files</h3>
+							<div class="list-group">
+							  <a href="#" class="list-group-item list-group-item-success"><span class="badge alert-success pull-right">Success</span>image-01.jpg</a>
+							  <a href="#" class="list-group-item list-group-item-success"><span class="badge alert-success pull-right">Success</span>image-02.jpg</a>
+							</div>
+						  </div> -->
 						</div>
 					  </div>
 					</div> <!-- /container -->
 			</div>
+            
+            <div class="col-md-4">
+                    <img id="blah" src="http://clipart-finder.com/data/mini/cybergedeon_skyline_landscape.png" alt="your image"  class="img-responsive"  />
+            </div>
+            
+
             <div class="col-md-4">
                 <div id="id01"></div>
                 <h3>Project Description</h3>
@@ -123,30 +153,30 @@
         <div class="row">
 
             <div class="col-lg-12">
-                <h3 class="page-header">Related Projects</h3>
+                <h3 class="page-header">Recent Photos</h3>
             </div>
 
             <div class="col-sm-3 col-xs-6">
                 <a href="#">
-                    <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
+                    <img class="img-responsive portfolio-item" src="pics/a.jpg" alt="">
                 </a>
             </div>
 
             <div class="col-sm-3 col-xs-6">
                 <a href="#">
-                    <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
+                    <img class="img-responsive portfolio-item" src="pics/b.jpg" alt="">
                 </a>
             </div>
 
             <div class="col-sm-3 col-xs-6">
                 <a href="#">
-                    <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
+                    <img class="img-responsive portfolio-item" src="pics/c.jpg" alt="">
                 </a>
             </div>
 
             <div class="col-sm-3 col-xs-6">
                 <a href="#">
-                    <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
+                    <img class="img-responsive portfolio-item" src="pics/d.jpg" alt="">
                 </a>
             </div>
 
@@ -159,7 +189,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
+                    <p>Facebook Hackthon 2016!</p>
                 </div>
             </div>
             <!-- /.row -->
@@ -169,18 +199,105 @@
     <!-- /.container -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
+    <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-<<<<<<< HEAD
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="js/requests.js"></script>
-=======
-	<script src="js/dragndrop.js"></script>
-	<!--<script src="js/getParms.js"></script> -->
->>>>>>> c72e30541698fbb28f0bcd66e8c0952a32576b73
+    <script src="js/image_prev.js"></script>
+	<script>
+        var serverAddr = "http://1.1.0.20:8080";
+        $(':file').change(function(){
+            var file = this.files[0];
+            //var name = file.name;
+            var size = file.size;
+            var type = file.type;
+            //Your validation
+        });
 
-	
+        $(':button').click(function(){
+            var url = document.getElementById('tb_url').value;
+            if(url == "" || url == undefined){ // from file
+                var formData = new FormData($('form')[0]);
+                $.ajax({
+                    url: serverAddr + '/process/src/file',  //Server script to process data
+                    type: 'POST',
+                    xhr: function() {  // Custom XMLHttpRequest
+                        var myXhr = $.ajaxSettings.xhr();
+                        if(myXhr.upload){ // Check if upload property exists
+                            myXhr.upload.addEventListener('progress',progressHandlingFunction, false); // For handling the progress of the upload
+                        }
+                        return myXhr;
+                    },
+                    //Ajax events
+            //         beforeSend: beforeSendHandler,
+<<<<<<< HEAD
+                    beforeSend: function(a) {
+                        toggleSpinner();
+                    },
+                    success: function(a) {
+                        toggleSpinner();
+=======
+                    success: function(data) { 
+                        console.log(data); 
+>>>>>>> 60e5f99601c9123673b4139c89fad7abe30444f7
+                    },
+                    error: function(a) { 
+                        console.log("err"); 
+                    },
+                    // Form data
+                    data: formData,
+                    //Options to tell jQuery not to process data or worry about content-type.
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    crossDomain: true
+                });
+            }else{ // url
+                document.getElementById('tb_url').value = "";
+                var form = new FormData();
+                form.append("src", url);
+                form.append("", "");
+                var settings = {
+                    "async": true,
+                    "crossDomain": true,
+                    "url": serverAddr + "/process/src/url",
+                    "method": "POST",
+                    "processData": false,
+                    "contentType": false,
+                    "mimeType": "multipart/form-data",
+                    "data": form,
+<<<<<<< HEAD
+                    beforeSend: function(a) {
+                        toggleSpinner();
+                    },
+                    success: function(a) {
+                        toggleSpinner();
+=======
+                    success: function(data) {
+                        console.log(data);
+>>>>>>> 60e5f99601c9123673b4139c89fad7abe30444f7
+                    },
+                    error: function(a) {
+                        console.log("err");
+                    },
+                }
+
+                $.ajax(settings).done(function (response) {
+                });
+            }
+            
+
+        });
+        
+        var toggleSpinner = function(){
+            var e = document.getElementById("spinner");
+            if(e.style.visibility == "hidden"){
+                e.style.visibility = "visible";
+            }else{
+                e.style.visibility = "hidden";
+            }
+        }
+    </script>
 </body>
 
 </html>
