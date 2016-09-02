@@ -68,8 +68,9 @@
         <!-- Portfolio Item Heading -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">BetterShot
-                    <small>make photos great again!</small>
+                <h1 class="page-header">
+                    <img class="img-responsive portfolio-item" src="pics/logo.png" alt="" style="display: inline; margin: 0px;">
+                    <small>Shoot, Reflect, Repeat.</small>
                 </h1>
             </div>
         </div>
@@ -78,14 +79,13 @@
         <!-- Portfolio Item Row -->
         <div class="row">
 
-			<div class="col-md-4">
+			<div class="col-md-3">
 					<div class="container1">
 					  <div class="panel panel-default">
-						<div class="panel-heading"><strong>Upload Files</strong> <small></small></div>
+						<div class="panel-heading"><strong>Upload Your Photo</strong> <small></small></div>
 						<div class="panel-body">
 
 						  <!-- Standar Form -->
-						  <h4>Select files from your computer</h4>
 						  <!-- <form action="" method="post" type=file enctype="multipart/form-data" id="js-upload-form">
 							<div class="form-inline">
 							  <div class="form-group">
@@ -125,16 +125,16 @@
 					</div> <!-- /container -->
 			</div>
             
-            <div class="col-md-4">
+            <div class="col-md-6">
                     <img id="blah" src="http://clipart-finder.com/data/mini/cybergedeon_skyline_landscape.png" alt="your image"  class="img-responsive"  />
             </div>
             
 
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div id="id01"></div>
 
                <div class="panel panel-default">
-               <div class="panel-heading"><strong>Analize Results</strong> <small></small></div>
+               <div class="panel-heading"><strong>Analyse Results</strong> <small></small></div>
                <div class="panel-body">
                <!-- <h1><center>Analize Results</center></h1>-->
                 
@@ -206,6 +206,9 @@
     <script src="js/requests.js"></script>
     <script src="js/image_prev.js"></script>
 	<script>
+        
+        
+        
         $("#imgInp")[0].addEventListener("click", function(){ document.getElementById('tb_url').value = ""; });
         
         $(':file').change(function(){
@@ -230,16 +233,15 @@
                         }
                         return myXhr;
                     },
-                    //Ajax events
-            //         beforeSend: beforeSendHandler,
                     beforeSend: function(a) {
                         toggleSpinner();
                     },
-                    success: function(a) {
+                    success: function(res) {
                         toggleSpinner();
+                        applyResponse(res);
                     },
                     error: function(a) { 
-                        console.log("err"); 
+                        toggleSpinner();
                     },
                     // Form data
                     data: formData,
@@ -251,55 +253,22 @@
                 });
             }else{ // url
                 document.getElementById('tb_url').value = "";
-				$.post("/process/src/url", {src: url}, function(data){
-					console.log(data);
+				$.post("/process/src/url", {src: url}, function(res){
+					toggleSpinner();
+                    applyResponse(res);
 				}, "json");
             }
         });
         
-</script>
-<script>
-    var response = [{
-        "prop":"iso",
-        "size":"200",
-        "insight":"not veraaaaaaaaaaaaaaaaaay"
-    },
-    {
-        "prop":"aperture",
-        "size":"1/4",
-        "insight":"excellent!"
-    }];
-
-    $.each(response, function(i, item) {
-    // $('<li">').html(
-    //     "<td>" + response[i].rank + "</td><td>" + response[i].content + "</td><td>" 
-    //     + response[i].UID + "</td>").appendTo('#records_table');
-    $('<span >').html(
-        //"<li class='list-group-item'>"+response[i].prop + " " + response[i].size+"</li>"+
-        //"<li class='list-group-item'>"+response[i].prop + " " + response[i].size+"</li>"+
-        "<li class='list-group-item list-group-item-success'>"+response[i].prop + ": "  + response[i].size+"</li>" + 
-        "<li class='list-group-item list-group-item-warning' style='margin-bottom: 3px;'>"+response[i].insight+"</li>"
-    ).appendTo('#list_rank');
-    });
-
-</script>
-</body>
-
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<link rel="stylesheet" href="css/dragndrop.css">
-
-
-<head>
-    <style type="text/css">
-         body { background: #CDCDCD !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
-    </style>
-
-    <!--<link rel='shortcut icon' href='favicon.ico' type='image/x-icon'/ >…        + response[i].UID + "</td>").appendTo('#records_table');});-->
-    
-
-</script>
+        var applyResponse = function(response){
+            $.each(response, function(i, item) {
+                $('<span >').html(
+                    "<li class='list-group-item list-group-item-success'>"+item['label'] + ": "  + item['value']+"</li>" + 
+                    "<li class='list-group-item list-group-item-warning' style='margin-bottom: 3px;'>"+item['insight']+"</li>"
+                ).appendTo('#list_rank');
+            });
+        }
+        
         var toggleSpinner = function(){
             var e = document.getElementById("spinner");
             if(e.style.visibility == "hidden"){
@@ -308,7 +277,9 @@
                 e.style.visibility = "hidden";
             }
         }
-    </script>
+        
+</script>
+
 </body>
 
 </html>

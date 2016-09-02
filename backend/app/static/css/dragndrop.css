@@ -4,8 +4,16 @@
   text-align: center;
 }
 
+.panel-heading {
+  background-color:  cadetblue !important;
+}
+
+#list_rank {
+  min-height: 300px;
+}
+
 body {
-  background-color:  lightgrey !important;
+  background-color: #DCDCDC !important;
 }
 
 #blah {
