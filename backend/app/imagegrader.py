@@ -86,19 +86,21 @@ class ImageGrader(object):
 
 class LandscapeGrader(ImageGrader):
     def __init__(self):
-        iso_insights = ["LOW", "OK", "Try to keep your ISO lower to get rid of the nasty graining"]
+        iso_insights = ["Low ISO is good!",
+                "Great!",
+                "Try to keep your ISO lower to get rid of nasty graining."]
         f_stop_insights = [
                 "Stepping down your aperture will provide you with a wider depth of field." + \
-                "In turn more of the scene will be in focus.",
-                "OK",
-                "While shooting landscapes small aperture is mostly the way to go. " + \
+                "This will make a greater part of the scenery appear in focus.",
+                "Great!",
+                "While shooting landscapes small aperture is mostly the way to go. \n" + \
                 "But going too far might lose you some of that sweet sharpness."]
         focal_length_insights = ["Wide is good!",
                 "Great!",
-                "Using a wider focal length will give your photo a more dramatic look."]
+                "Using a wider focal length will give your photo a more dramatic look and will capture more of the scenery."]
         shutter_speed_insights = ["Low!",
                 "Great!",
-                "As long as you used a tripod you are golden. " + \
+                "As long as you used a tripod you are golden. \n" + \
                 "For hand-holding you should consider using faster shutter speeds."
                 ]
 
