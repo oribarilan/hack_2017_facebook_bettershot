@@ -7,7 +7,7 @@ class ImageGrader(object):
             self.label = label
             self.matcher = matcher
             self.insights = insights
-            self.grade = None
+            #self.grade = None
 
         #def set_matcher(self, matcher):
         #    self.matcher = matcher
